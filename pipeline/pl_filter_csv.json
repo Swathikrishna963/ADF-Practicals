@@ -1,0 +1,64 @@
+{
+	"name": "pl_filter_csv",
+	"properties": {
+		"activities": [
+			{
+				"name": "filter_movieid",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "lkp_movies_csv",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('lkp_movies_csv').output.value",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item().movieId, '26')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "lkp_movies_csv",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": false,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "ds_lookup_movies_csv",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-11-10T07:33:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

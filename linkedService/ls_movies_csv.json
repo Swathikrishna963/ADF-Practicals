@@ -1,0 +1,12 @@
+{
+	"name": "ls_movies_csv",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://stdevmyfirstdemoadf.dfs.core.windows.net/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDU0RERFRDg5LTFBODAtNEQzQy1BMzUwLTRCRUE1NEI2NUQ3NV84OTk1YWNmNi1jODgxLTQwY2UtODlkOC1jNDk5NDM4YzgwYTEiDQp9"
+		}
+	}
+}
